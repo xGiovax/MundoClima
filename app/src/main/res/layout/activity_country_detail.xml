@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="12dp">
+
+            <ImageView android:id="@+id/ivFlag"
+                android:layout_width="match_parent" android:layout_height="130dp"
+                android:scaleType="fitCenter" android:contentDescription="Bandera" />
+            <TextView android:id="@+id/tvName"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" android:textSize="22sp" android:textStyle="bold" />
+            <TextView android:id="@+id/tvOfficial"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textSize="13sp" />
+            <TextView android:id="@+id/tvInfo"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" android:lineSpacingExtra="4dp" android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" android:text="Mapa de ciudades"
+                android:textSize="16sp" android:textStyle="bold" />
+            <org.osmdroid.views.MapView
+                android:id="@+id/map"
+                android:layout_width="match_parent" android:layout_height="300dp"
+                android:layout_marginTop="6dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:text="Ciudades principales"
+                    android:textSize="16sp" android:textStyle="bold" />
+                <Button android:id="@+id/btnRefresh"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Actualizar clima" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Fuente: GeoNames · hasta 10 ciudades por población"
+                android:textSize="11sp" />
+
+            <TextView android:id="@+id/tvCitiesError"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" android:textColor="#C62828" android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerCities"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" android:nestedScrollingEnabled="false" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar android:id="@+id/progress"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="center" android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/errorBox"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="center" android:gravity="center"
+        android:orientation="vertical" android:padding="24dp" android:visibility="gone">
+        <TextView android:id="@+id/tvError"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:gravity="center" android:textSize="16sp" />
+        <Button android:id="@+id/btnRetry"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="Reintentar" />
+    </LinearLayout>
+</FrameLayout>
